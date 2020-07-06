@@ -9,10 +9,12 @@
 import UIKit
 
 class DogViewCell: UICollectionViewCell {
+//    MARK: - Properties
     
     private var dogImageView: UIImageView?
     private var breedLabel: UILabel?
 
+//    MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -22,12 +24,13 @@ class DogViewCell: UICollectionViewCell {
         setImageViewConstraints()
         setBreedLabelConstraints()
         setGradientToImage()
-
     }
     
     required init?(coder: NSCoder) {
            fatalError("init(coder:) has not been implemented")
        }
+    
+//    MARK: Add and configure ImageView
     
     private func addAndConfigureImageView() {
         let imageView = UIImageView(frame: .zero)
@@ -42,19 +45,16 @@ class DogViewCell: UICollectionViewCell {
         contentView.addSubview(imageView)
     }
     
-    override func draw(_ rect: CGRect) {
-//        setGradientToImage()
-    }
-    
     private func setGradientToImage() {
         let gradient = CAGradientLayer()
-        if let frame = dogImageView?.frame {
-            gradient.frame = frame
-            gradient.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
-            gradient.locations = [0.6, 1]
-            dogImageView?.layer.insertSublayer(gradient, at: 0)
-        }
+        
+        gradient.frame = bounds
+        gradient.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
+        gradient.locations = [0.6, 1]
+        dogImageView?.layer.insertSublayer(gradient, at: 0)
     }
+    
+//    MARK: - Add and configure UILabel
     
     private func addAndConfigureBreedLabel() {
         let textLabel = UILabel(frame: .zero)
@@ -66,6 +66,8 @@ class DogViewCell: UICollectionViewCell {
         breedLabel = textLabel
         dogImageView?.addSubview(textLabel)
     }
+    
+//    MARK: - Set constraints
     
     private func setImageViewConstraints() {
         if let imageView = dogImageView {
@@ -82,11 +84,13 @@ class DogViewCell: UICollectionViewCell {
         if let textLabel = breedLabel, let superView = textLabel.superview {
             NSLayoutConstraint.activate([
                 textLabel.leadingAnchor.constraint(equalTo: superView.leadingAnchor, constant: 5),
-                textLabel.bottomAnchor.constraint(equalTo: superView.bottomAnchor),
+                textLabel.bottomAnchor.constraint(equalTo: superView.bottomAnchor,constant: -5),
                 textLabel.trailingAnchor.constraint(equalTo: superView.trailingAnchor, constant: 5)
             ])
         }
     }
+    
+//    MARK: - Update content
     
     public func updateContent(with model: DogCellModel) {
         dogImageView?.image = UIImage(named: model.dogBreed)

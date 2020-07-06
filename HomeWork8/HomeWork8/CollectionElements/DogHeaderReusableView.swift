@@ -14,15 +14,14 @@ class DogHeaderReusableView: UICollectionReusableView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         addAndConfigureLabel()
+        setLabelConstraints()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func draw(_ rect: CGRect) {
-        setLabelConstraints()
-    }
+//    MARK: - Add and configure UIlabel
     
     private func addAndConfigureLabel() {
         let label = UILabel()
@@ -39,6 +38,8 @@ class DogHeaderReusableView: UICollectionReusableView {
         self.addSubview(label)
     }
     
+//    MARK: - Set constraints
+    
     private func setLabelConstraints() {
         if let label = textLabel, let superView = label.superview {
             NSLayoutConstraint.activate([
@@ -48,6 +49,8 @@ class DogHeaderReusableView: UICollectionReusableView {
             ])
         }
     }
+    
+//    MARK: - Update content
     
     public func updateContent(with model: DogCellModel) {
         textLabel?.text = model.dogColor.rawValue

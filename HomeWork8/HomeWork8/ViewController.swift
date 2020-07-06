@@ -10,14 +10,20 @@ import UIKit
 
 final class ViewController: UIViewController {
     
+//    MARK: - Collection manager
+    
     private var collectionManager: UICollectionViewManager?
 
+//    MARK: - ViewController Life cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         view.backgroundColor = #colorLiteral(red: 0.9570989013, green: 0.9075112939, blue: 0.9724140763, alpha: 1)
         configureCollectionView()
     }
+    
+//    MARK: - Configure collection view
     
     func configureCollectionView() {
         let layout = UICollectionViewFlowLayout()
@@ -34,7 +40,6 @@ final class ViewController: UIViewController {
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
         
-        
         collectionView.register(DogViewCell.self, forCellWithReuseIdentifier: "cell")
         collectionView.register(DogHeaderReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "header")
         
@@ -44,9 +49,5 @@ final class ViewController: UIViewController {
         collectionView.dataSource = collectionManager
         
         collectionView.backgroundColor = #colorLiteral(red: 0.9570989013, green: 0.9075112939, blue: 0.9724140763, alpha: 1)
-        
     }
-
-
 }
-

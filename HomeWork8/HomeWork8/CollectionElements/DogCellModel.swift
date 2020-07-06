@@ -8,11 +8,15 @@
 
 import Foundation
 
+//MARK: - Dog color variance
+
 enum DogColor: String, CaseIterable {
     case black = "Black"
     case white = "White"
     case orange = "Orange"
 }
+
+//MARK: - Dog cell model
 
 struct DogCellModel {
     static var dogCounter = [DogColor:Int]()
@@ -32,11 +36,10 @@ struct DogCellModel {
         self.breed = breed
         self.color = color
         
-        countDog(with: color)
+        addDog(with: color)
     }
     
-    private func countDog(with color: DogColor) {
+    private func addDog(with color: DogColor) {
         DogCellModel.dogCounter[color] = (DogCellModel.dogCounter[color] ?? 0) + 1
     }
-    
 }
