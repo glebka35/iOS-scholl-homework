@@ -10,6 +10,14 @@
 		2B29CBB924B83E2C00C2377D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B29CBB824B83E2C00C2377D /* MainViewController.swift */; };
 		2B29CBBB24B8444300C2377D /* UserInfoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B29CBBA24B8444300C2377D /* UserInfoTextField.swift */; };
 		2B29CBBD24B84FEC00C2377D /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B29CBBC24B84FEC00C2377D /* Defaults.swift */; };
+		2B80001E24BC7F9D004D1A12 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B80001D24BC7F9D004D1A12 /* TableViewController.swift */; };
+		2B9EF09C24BC3ADC001CCEA3 /* CheckInCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2B9EF09A24BC3ADC001CCEA3 /* CheckInCoreData.xcdatamodeld */; };
+		2B9EF0A124BC4021001CCEA3 /* Car+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9EF09D24BC4021001CCEA3 /* Car+CoreDataClass.swift */; };
+		2B9EF0A224BC4021001CCEA3 /* Car+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9EF09E24BC4021001CCEA3 /* Car+CoreDataProperties.swift */; };
+		2B9EF0A324BC4021001CCEA3 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9EF09F24BC4021001CCEA3 /* User+CoreDataClass.swift */; };
+		2B9EF0A424BC4021001CCEA3 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9EF0A024BC4021001CCEA3 /* User+CoreDataProperties.swift */; };
+		2B9EF0A624BC405F001CCEA3 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9EF0A524BC405F001CCEA3 /* CoreDataManager.swift */; };
+		2B9EF0A924BC43A1001CCEA3 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9EF0A824BC43A1001CCEA3 /* Model.swift */; };
 		2BE3AB9024B741E100EFAFA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE3AB8F24B741E100EFAFA0 /* AppDelegate.swift */; };
 		2BE3AB9424B741E100EFAFA0 /* CheckInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE3AB9324B741E100EFAFA0 /* CheckInController.swift */; };
 		2BE3AB9924B741E300EFAFA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BE3AB9824B741E300EFAFA0 /* Assets.xcassets */; };
@@ -20,6 +28,14 @@
 		2B29CBB824B83E2C00C2377D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		2B29CBBA24B8444300C2377D /* UserInfoTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoTextField.swift; sourceTree = "<group>"; };
 		2B29CBBC24B84FEC00C2377D /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
+		2B80001D24BC7F9D004D1A12 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		2B9EF09B24BC3ADC001CCEA3 /* CheckInCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CheckInCoreData.xcdatamodel; sourceTree = "<group>"; };
+		2B9EF09D24BC4021001CCEA3 /* Car+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Car+CoreDataClass.swift"; sourceTree = "<group>"; };
+		2B9EF09E24BC4021001CCEA3 /* Car+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Car+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2B9EF09F24BC4021001CCEA3 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
+		2B9EF0A024BC4021001CCEA3 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2B9EF0A524BC405F001CCEA3 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		2B9EF0A824BC43A1001CCEA3 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		2BE3AB8C24B741E100EFAFA0 /* Registration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Registration.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BE3AB8F24B741E100EFAFA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2BE3AB9324B741E100EFAFA0 /* CheckInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInController.swift; sourceTree = "<group>"; };
@@ -39,6 +55,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B80001C24BC785D004D1A12 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				2BE3AB9324B741E100EFAFA0 /* CheckInController.swift */,
+				2B29CBB824B83E2C00C2377D /* MainViewController.swift */,
+				2B80001D24BC7F9D004D1A12 /* TableViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		2B9EF0A724BC431C001CCEA3 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				2B9EF09A24BC3ADC001CCEA3 /* CheckInCoreData.xcdatamodeld */,
+				2B9EF09D24BC4021001CCEA3 /* Car+CoreDataClass.swift */,
+				2B9EF09E24BC4021001CCEA3 /* Car+CoreDataProperties.swift */,
+				2B9EF09F24BC4021001CCEA3 /* User+CoreDataClass.swift */,
+				2B9EF0A024BC4021001CCEA3 /* User+CoreDataProperties.swift */,
+				2B9EF0A524BC405F001CCEA3 /* CoreDataManager.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		2BE3AB8324B741E100EFAFA0 = {
 			isa = PBXGroup;
 			children = (
@@ -58,9 +97,10 @@
 		2BE3AB8E24B741E100EFAFA0 /* Registration */ = {
 			isa = PBXGroup;
 			children = (
+				2B9EF0A724BC431C001CCEA3 /* CoreData */,
 				2BE3AB8F24B741E100EFAFA0 /* AppDelegate.swift */,
-				2BE3AB9324B741E100EFAFA0 /* CheckInController.swift */,
-				2B29CBB824B83E2C00C2377D /* MainViewController.swift */,
+				2B80001C24BC785D004D1A12 /* ViewControllers */,
+				2B9EF0A824BC43A1001CCEA3 /* Model.swift */,
 				2B29CBBA24B8444300C2377D /* UserInfoTextField.swift */,
 				2B29CBBC24B84FEC00C2377D /* Defaults.swift */,
 				2BE3AB9824B741E300EFAFA0 /* Assets.xcassets */,
@@ -140,11 +180,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B9EF0A224BC4021001CCEA3 /* Car+CoreDataProperties.swift in Sources */,
 				2B29CBB924B83E2C00C2377D /* MainViewController.swift in Sources */,
+				2B80001E24BC7F9D004D1A12 /* TableViewController.swift in Sources */,
 				2BE3AB9424B741E100EFAFA0 /* CheckInController.swift in Sources */,
+				2B9EF0A924BC43A1001CCEA3 /* Model.swift in Sources */,
+				2B9EF09C24BC3ADC001CCEA3 /* CheckInCoreData.xcdatamodeld in Sources */,
+				2B9EF0A124BC4021001CCEA3 /* Car+CoreDataClass.swift in Sources */,
+				2B9EF0A324BC4021001CCEA3 /* User+CoreDataClass.swift in Sources */,
 				2B29CBBD24B84FEC00C2377D /* Defaults.swift in Sources */,
 				2B29CBBB24B8444300C2377D /* UserInfoTextField.swift in Sources */,
+				2B9EF0A424BC4021001CCEA3 /* User+CoreDataProperties.swift in Sources */,
 				2BE3AB9024B741E100EFAFA0 /* AppDelegate.swift in Sources */,
+				2B9EF0A624BC405F001CCEA3 /* CoreDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,6 +382,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2B9EF09A24BC3ADC001CCEA3 /* CheckInCoreData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2B9EF09B24BC3ADC001CCEA3 /* CheckInCoreData.xcdatamodel */,
+			);
+			currentVersion = 2B9EF09B24BC3ADC001CCEA3 /* CheckInCoreData.xcdatamodel */;
+			path = CheckInCoreData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 2BE3AB8424B741E100EFAFA0 /* Project object */;
 }

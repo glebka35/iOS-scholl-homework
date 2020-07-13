@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,13 +20,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let frame = UIScreen.main.bounds
         window = UIWindow(frame: frame)
         
-
         let navigationController = UINavigationController(rootViewController: CheckInController())
         
-        if let userInfo = Defaults.getLoginAndPassword() {
-            let mainController = MainViewController(login: userInfo.login, password: userInfo.password)
+        let coreDataManager = CoreDataManager.shared
+        if let _ = coreDataManager.fetchUserInfo() {
+            let mainController = MainViewController()
             navigationController.pushViewController(mainController, animated: false)
         }
+
         navigationController.navigationBar.isHidden = true
         
         window?.rootViewController = navigationController
@@ -33,5 +35,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
+    
+    lazy var persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "CheckInCoreData")
+        container.loadPersistentStores { (storeDescription, error) in
+            if let error = error as NSError? {
+                
+            }
+        }
+        return container
+    } ()
 }
 

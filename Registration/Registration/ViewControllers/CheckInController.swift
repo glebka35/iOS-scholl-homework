@@ -12,6 +12,8 @@ import UIKit
 
 struct CheckInViewConstants {
     enum ElementsNames: String {
+        case name = "First Name"
+        case surName = "Second Name"
         case login = "Login"
         case password = "Password"
         case confirmButton = "Register"
@@ -21,6 +23,18 @@ struct CheckInViewConstants {
 class CheckInController: UIViewController {
     
 //    MARK: - Model variables
+    
+    private var name: String? {
+           didSet {
+               nameField.text = name
+           }
+       }
+
+    private var surName: String? {
+        didSet {
+            surNameField.text = surName
+        }
+    }
     
     private var login: String? {
               didSet {
@@ -34,8 +48,12 @@ class CheckInController: UIViewController {
            }
        }
     
+    private var coreDataManager = CoreDataManager.shared
+    
 //    MARK: - UI elements
     
+    private var nameField = UserInfoTextField()
+    private var surNameField = UserInfoTextField()
     private var loginField = UserInfoTextField()
     private var passwordField = UserInfoTextField()
     private var confirmButton = UIButton()
@@ -46,7 +64,9 @@ class CheckInController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .white
-        
+                
+        configureNameField()
+        configureSurNameField()
         configureLoginField()
         configurePasswordField()
         configureConfirmButton()
@@ -57,6 +77,16 @@ class CheckInController: UIViewController {
     }
     
 //    MARK: - UI configuration
+    
+    private func configureNameField() {
+        nameField.placeholder = CheckInViewConstants.ElementsNames.name.rawValue
+        nameField.delegate = self
+    }
+    
+    private func configureSurNameField() {
+        surNameField.placeholder = CheckInViewConstants.ElementsNames.surName.rawValue
+        surNameField.delegate = self
+    }
     
     private func configureLoginField() {
         loginField.placeholder = CheckInViewConstants.ElementsNames.login.rawValue
@@ -85,7 +115,7 @@ class CheckInController: UIViewController {
     }
     
     private func embedInStackView() {
-        let stack = UIStackView(arrangedSubviews: [loginField, passwordField, confirmButton])
+        let stack = UIStackView(arrangedSubviews: [nameField, surNameField, loginField, passwordField, confirmButton])
         
         stack.axis = .vertical
         stack.alignment = .fill
@@ -99,7 +129,7 @@ class CheckInController: UIViewController {
             stack.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
             stack.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
             stack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
-            stack.heightAnchor.constraint(equalToConstant: 170)
+            stack.heightAnchor.constraint(equalToConstant: 270)
         ])
     }
     
@@ -112,9 +142,10 @@ class CheckInController: UIViewController {
     @objc private func registerButtonTapped() {
         view.endEditing(true)
         
-        if let login = login, let password = password {
-            Defaults.save(userDetails: Defaults.UserDetails(login: login, password: password))
-            let mainController = MainViewController(login: login, password: password)
+        if let login = login, let password = password, let name = name, let surName = surName {
+            let userInfo = UserInfo(name: name, surName: surName, login: login, password: password)
+            coreDataManager.addUserRecordIntoCoreData(user: userInfo)
+            let mainController = MainViewController()
             navigationController?.pushViewController(mainController, animated: true)
             
             clearController()
@@ -126,6 +157,8 @@ class CheckInController: UIViewController {
     private func clearController() {
         login = nil
         password = nil
+        name = nil
+        surName = nil
     }
 }
 
@@ -134,8 +167,21 @@ class CheckInController: UIViewController {
 extension CheckInController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        if textField === loginField {
-            passwordField.becomeFirstResponder()
+        var nextResponder: UserInfoTextField?
+        
+        switch(textField) {
+        case nameField:
+            nextResponder = surNameField
+        case surNameField:
+            nextResponder = loginField
+        case loginField:
+            nextResponder = passwordField
+        default:
+            break
+        }
+        
+        if let nextResponder = nextResponder {
+            nextResponder.becomeFirstResponder()
         }
         return true
     }
@@ -145,10 +191,13 @@ extension CheckInController: UITextFieldDelegate {
             switch (textField) {
             case loginField:
                 login = text
-                break
             case passwordField:
                 password = text
-                break
+            case nameField:
+                name = text
+            case surNameField:
+                surName = text
+                
             default: break
             }
         }
