@@ -12,10 +12,10 @@
 		2B6BC15324B2639100ED4125 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6BC15224B2639100ED4125 /* ViewController.swift */; };
 		2B6BC15824B2639600ED4125 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B6BC15724B2639600ED4125 /* Assets.xcassets */; };
 		2B6BC15B24B2639600ED4125 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B6BC15924B2639600ED4125 /* LaunchScreen.storyboard */; };
-		2B6BC16324B2645A00ED4125 /* CollectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6BC16224B2645A00ED4125 /* CollectionManager.swift */; };
 		2B6BC16524B2661500ED4125 /* DogCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6BC16424B2661500ED4125 /* DogCellModel.swift */; };
 		2B6BC16724B27B2D00ED4125 /* DogViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6BC16624B27B2D00ED4125 /* DogViewCell.swift */; };
 		2B6BC16A24B2FE4400ED4125 /* DogHeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6BC16924B2FE4400ED4125 /* DogHeaderReusableView.swift */; };
+		2B80002024BD9FA2004D1A12 /* CollectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B80001F24BD9FA2004D1A12 /* CollectionManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,10 +26,10 @@
 		2B6BC15724B2639600ED4125 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2B6BC15A24B2639600ED4125 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2B6BC15C24B2639600ED4125 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2B6BC16224B2645A00ED4125 /* CollectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionManager.swift; sourceTree = "<group>"; };
 		2B6BC16424B2661500ED4125 /* DogCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogCellModel.swift; sourceTree = "<group>"; };
 		2B6BC16624B27B2D00ED4125 /* DogViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogViewCell.swift; sourceTree = "<group>"; };
 		2B6BC16924B2FE4400ED4125 /* DogHeaderReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogHeaderReusableView.swift; sourceTree = "<group>"; };
+		2B80001F24BD9FA2004D1A12 /* CollectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +65,7 @@
 				2B6BC14E24B2639100ED4125 /* AppDelegate.swift */,
 				2B6BC15024B2639100ED4125 /* SceneDelegate.swift */,
 				2B6BC15224B2639100ED4125 /* ViewController.swift */,
-				2B6BC16224B2645A00ED4125 /* CollectionManager.swift */,
+				2B80001F24BD9FA2004D1A12 /* CollectionManager.swift */,
 				2B6BC16824B2881800ED4125 /* CollectionElements */,
 				2B6BC15924B2639600ED4125 /* LaunchScreen.storyboard */,
 				2B6BC15C24B2639600ED4125 /* Info.plist */,
@@ -157,8 +157,8 @@
 				2B6BC15324B2639100ED4125 /* ViewController.swift in Sources */,
 				2B6BC16A24B2FE4400ED4125 /* DogHeaderReusableView.swift in Sources */,
 				2B6BC16724B27B2D00ED4125 /* DogViewCell.swift in Sources */,
-				2B6BC16324B2645A00ED4125 /* CollectionManager.swift in Sources */,
 				2B6BC14F24B2639100ED4125 /* AppDelegate.swift in Sources */,
+				2B80002024BD9FA2004D1A12 /* CollectionManager.swift in Sources */,
 				2B6BC15124B2639100ED4125 /* SceneDelegate.swift in Sources */,
 				2B6BC16524B2661500ED4125 /* DogCellModel.swift in Sources */,
 			);
