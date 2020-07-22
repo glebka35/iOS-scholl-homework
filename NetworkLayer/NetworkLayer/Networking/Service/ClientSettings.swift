@@ -8,14 +8,11 @@
 
 import Foundation
 
-public enum NetworkEnvironment {
-    case qa
-    case production
-    case staging
+protocol ClientSettingsProviderProtocol {
+    var settings: ClientSettings { get }
+    var baseURL: URL { get }
 }
 
 public struct ClientSettings {
-    let baseURL: URL
-    var environment: NetworkEnvironment
     var baseHeaders: HTTPHeaders?
 }

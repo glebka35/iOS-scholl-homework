@@ -19,12 +19,17 @@
 		2B7CF63124A5118B000AFD77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B7CF62F24A5118B000AFD77 /* LaunchScreen.storyboard */; };
 		2B7CF64424A51303000AFD77 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7CF64324A51303000AFD77 /* HTTPMethod.swift */; };
 		2B7CF64624A5137F000AFD77 /* HTTPTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7CF64524A5137F000AFD77 /* HTTPTask.swift */; };
-		2B7CF64824A51433000AFD77 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7CF64724A51433000AFD77 /* ParameterEncoding.swift */; };
+		2B7CF64824A51433000AFD77 /* EncodingServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7CF64724A51433000AFD77 /* EncodingServices.swift */; };
 		2B7CF64A24A514EA000AFD77 /* URLParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7CF64924A514EA000AFD77 /* URLParameterEncoder.swift */; };
 		2B7CF64C24A51732000AFD77 /* JSONParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7CF64B24A51732000AFD77 /* JSONParameterEncoder.swift */; };
 		2B7CF65224A521F6000AFD77 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7CF65124A521F6000AFD77 /* Request.swift */; };
 		2B7CF65424A52532000AFD77 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7CF65324A52532000AFD77 /* ApiClient.swift */; };
 		2B8184EB24A52A4D006AC1ED /* CloudMersiveResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8184EA24A52A4D006AC1ED /* CloudMersiveResponse.swift */; };
+		2B89A57424C731C3000BE9D3 /* TranslationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B89A57224C731C3000BE9D3 /* TranslationResponse.swift */; };
+		2B89A57524C731C3000BE9D3 /* TranslationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B89A57324C731C3000BE9D3 /* TranslationClient.swift */; };
+		2BD8D34D24C75F9B0099C575 /* HTTPBodyContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD8D34C24C75F9B0099C575 /* HTTPBodyContentType.swift */; };
+		2BD8D34F24C81D260099C575 /* FormDataParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD8D34E24C81D260099C575 /* FormDataParameterEncoder.swift */; };
+		2BD8D35124C827E10099C575 /* NSMutableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD8D35024C827E10099C575 /* NSMutableData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,12 +47,17 @@
 		2B7CF63224A5118B000AFD77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B7CF64324A51303000AFD77 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		2B7CF64524A5137F000AFD77 /* HTTPTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTask.swift; sourceTree = "<group>"; };
-		2B7CF64724A51433000AFD77 /* ParameterEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterEncoding.swift; sourceTree = "<group>"; };
+		2B7CF64724A51433000AFD77 /* EncodingServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodingServices.swift; sourceTree = "<group>"; };
 		2B7CF64924A514EA000AFD77 /* URLParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParameterEncoder.swift; sourceTree = "<group>"; };
 		2B7CF64B24A51732000AFD77 /* JSONParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParameterEncoder.swift; sourceTree = "<group>"; };
 		2B7CF65124A521F6000AFD77 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		2B7CF65324A52532000AFD77 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		2B8184EA24A52A4D006AC1ED /* CloudMersiveResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudMersiveResponse.swift; sourceTree = "<group>"; };
+		2B89A57224C731C3000BE9D3 /* TranslationResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslationResponse.swift; sourceTree = "<group>"; };
+		2B89A57324C731C3000BE9D3 /* TranslationClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslationClient.swift; sourceTree = "<group>"; };
+		2BD8D34C24C75F9B0099C575 /* HTTPBodyContentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPBodyContentType.swift; sourceTree = "<group>"; };
+		2BD8D34E24C81D260099C575 /* FormDataParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormDataParameterEncoder.swift; sourceTree = "<group>"; };
+		2BD8D35024C827E10099C575 /* NSMutableData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSMutableData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +102,7 @@
 				2B7CF63224A5118B000AFD77 /* Info.plist */,
 				2B7CF63824A511A5000AFD77 /* Application */,
 				2B7CF63A24A511C5000AFD77 /* ViewController */,
+				2B89A57124C731A2000BE9D3 /* GoogleTranslation */,
 				2B6BC12924AE4BC400ED4125 /* CloudMersive */,
 				2B7CF63B24A511EA000AFD77 /* Networking */,
 				2B7CF62D24A5118B000AFD77 /* Assets.xcassets */,
@@ -131,9 +142,11 @@
 		2B7CF63D24A51205000AFD77 /* Encoding */ = {
 			isa = PBXGroup;
 			children = (
-				2B7CF64724A51433000AFD77 /* ParameterEncoding.swift */,
+				2B7CF64724A51433000AFD77 /* EncodingServices.swift */,
 				2B7CF64924A514EA000AFD77 /* URLParameterEncoder.swift */,
 				2B7CF64B24A51732000AFD77 /* JSONParameterEncoder.swift */,
+				2BD8D34E24C81D260099C575 /* FormDataParameterEncoder.swift */,
+				2BD8D35024C827E10099C575 /* NSMutableData.swift */,
 			);
 			path = Encoding;
 			sourceTree = "<group>";
@@ -147,6 +160,7 @@
 				2B6BC16F24B45EA200ED4125 /* ClientSettings.swift */,
 				2B6BC16B24B36EF400ED4125 /* Response.swift */,
 				2B6BC16D24B36F5500ED4125 /* NetworkManager.swift */,
+				2BD8D34C24C75F9B0099C575 /* HTTPBodyContentType.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -157,6 +171,15 @@
 				2B7CF65324A52532000AFD77 /* ApiClient.swift */,
 			);
 			path = Client;
+			sourceTree = "<group>";
+		};
+		2B89A57124C731A2000BE9D3 /* GoogleTranslation */ = {
+			isa = PBXGroup;
+			children = (
+				2B89A57324C731C3000BE9D3 /* TranslationClient.swift */,
+				2B89A57224C731C3000BE9D3 /* TranslationResponse.swift */,
+			);
+			path = GoogleTranslation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,8 +255,12 @@
 			files = (
 				2B7CF64A24A514EA000AFD77 /* URLParameterEncoder.swift in Sources */,
 				2B8184EB24A52A4D006AC1ED /* CloudMersiveResponse.swift in Sources */,
-				2B7CF64824A51433000AFD77 /* ParameterEncoding.swift in Sources */,
+				2B89A57424C731C3000BE9D3 /* TranslationResponse.swift in Sources */,
+				2B7CF64824A51433000AFD77 /* EncodingServices.swift in Sources */,
+				2BD8D34F24C81D260099C575 /* FormDataParameterEncoder.swift in Sources */,
 				2B7CF65424A52532000AFD77 /* ApiClient.swift in Sources */,
+				2BD8D34D24C75F9B0099C575 /* HTTPBodyContentType.swift in Sources */,
+				2BD8D35124C827E10099C575 /* NSMutableData.swift in Sources */,
 				2B7CF64624A5137F000AFD77 /* HTTPTask.swift in Sources */,
 				2B6BC17024B45EA200ED4125 /* ClientSettings.swift in Sources */,
 				2B6BC16C24B36EF400ED4125 /* Response.swift in Sources */,
@@ -244,6 +271,7 @@
 				2B6BC17224B4699E00ED4125 /* CloudMersiveClient.swift in Sources */,
 				2B7CF62524A51188000AFD77 /* AppDelegate.swift in Sources */,
 				2B7CF64424A51303000AFD77 /* HTTPMethod.swift in Sources */,
+				2B89A57524C731C3000BE9D3 /* TranslationClient.swift in Sources */,
 				2B7CF62724A51188000AFD77 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

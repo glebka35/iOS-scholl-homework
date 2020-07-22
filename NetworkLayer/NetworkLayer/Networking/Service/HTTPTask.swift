@@ -12,16 +12,13 @@ public typealias HTTPHeaders = [String:String]
 
 public enum HTTPTask {
     case request
-    case requestParameters(bodyParameters: Parameters?,
+    case requestParameters(
+        bodyParameters: Parameters?,
+        bodyContentType: HTTPBodyContentType?,
         urlParameters: Parameters?)
-    case requestParametersAndHeaders(bodyParameters: Parameters?,
+    case requestParametersAndHeaders(
+        bodyParameters: Parameters?,
+        bodyContentType: HTTPBodyContentType?,
         urlParameters: Parameters?,
         additionHeaders: HTTPHeaders?)
-    case requestFormDataAndHeaders(bodyParameters: Parameters?,
-        urlParameters: Parameters?,
-        additionHeaders: HTTPHeaders?,
-        boundary: String,
-        data: Data,
-        mimeType: String,
-        filename: String)
 }

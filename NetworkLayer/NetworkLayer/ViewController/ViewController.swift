@@ -21,28 +21,52 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         configureAndSetConstraintsToImageView()
-        
-        displayImageAndObjects()
+        showGaleryImagePicker()
+
+        let client = TranslationClient()
+        client.getTranslation(of: "House!", from: "en", to: "es") { (translation) in
+            print(translation)
+        }
     }
     
-    private func displayImageAndObjects() {
-        let imageName = "pen"
-        if let image = UIImage(named: imageName){
-            print("image size = ", image.size)
-            if let data = image.jpegData(compressionQuality: 0.3) {
-//                imageView.image = UIImage(data: data)
-                let cloudMersive = CloudMersiveClient()
-                cloudMersive.getRecognition(of: data, name: imageName) {[weak self] objects, success in
-                    if let object = objects?.first {
-                        let rect = CGRect(x: object.x, y: object.y, width: object.width - object.x, height: object.height - object.y)
-                        DispatchQueue.main.async { [weak self] in
-                            self?.drawRectangleOnImage(with: UIImage(data: data)!, and: rect)
-                        }
+    private func displayImageAndObjects(with image: UIImage) {
+
+                let imageName = "cup"
+        //        if let image = UIImage(named: imageName){
+        //            print("Initial image size = ", image.size)
+        //
+        //            let aspectRatio = image.size.height / image.size.width
+        //            let width: CGFloat = 3024
+        //            let height = aspectRatio * width
+        //            let newSize = CGSize(width: width, height: height)
+        //            UIGraphicsBeginImageContext( newSize )
+        //            image.draw(in: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
+        //            let newImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()!;
+        //            UIGraphicsEndImageContext();
+
+        //            let newImage = image
+
+
+//        print("Last image size = ", image.size)
+        if let data = image.jpegData(compressionQuality: 1) {
+            imageView.image = UIImage(data: data)
+            let nsData = NSData(data: data)
+            var imageSize: Int = nsData.count
+            print(Double(imageSize) / 1000000)
+            let cloudMersive = CloudMersiveClient()
+            cloudMersive.getRecognition(of: data, name: imageName) {[weak self] objects, success in
+                if let object = objects?.first {
+                    let rect = CGRect(x: object.x, y: object.y, width: object.width - object.x, height: object.height - object.y)
+                    DispatchQueue.main.async { [weak self] in
+                        self?.drawRectangleOnImage(with: UIImage(data: data)!, and: rect)
                     }
+                } else {
+                    print("Objects is empty")
                 }
             }
         }
     }
+
     
     private func drawRectangleOnImage(with image: UIImage, and rect: CGRect) {
         UIGraphicsBeginImageContextWithOptions(image.size, false, 0)
@@ -70,5 +94,23 @@ class ViewController: UIViewController {
             imageView.heightAnchor.constraint(equalToConstant: 700)
         ])
     }
+
+    func showGaleryImagePicker() {
+        let pickerController = UIImagePickerController()
+        pickerController.delegate = self
+        pickerController.allowsEditing = true
+        pickerController.mediaTypes = ["public.image"]
+        pickerController.sourceType = .photoLibrary
+        pickerController.allowsEditing = true
+        self.present(pickerController, animated: true, completion: nil)
+    }
 }
 
+extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let pickedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            displayImageAndObjects(with: pickedImage)
+        }
+        dismiss(animated: true, completion: nil)
+    }
+}

@@ -8,10 +8,11 @@
 
 import Foundation
 
-public struct URLParameterEncoder: ParameterEncoder {
-    public static func encode(urlRequest: inout URLRequest, with parameters: Parameters) throws {
+public struct URLParameterEncoder {
+    public static func encode(urlRequest: inout URLRequest, with parameters: Parameters?, isBody: Bool) throws {
         
         guard let url = urlRequest.url else { throw NetworkError.missingURL }
+        guard let parameters = parameters else { throw NetworkError.parameterNil }
         
         if var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false), !parameters.isEmpty {
             urlComponents.queryItems = [URLQueryItem]()
@@ -20,7 +21,11 @@ public struct URLParameterEncoder: ParameterEncoder {
                 let queryItem = URLQueryItem(name: key, value: "\(value)".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)) 
                     urlComponents.queryItems?.append(queryItem)
             }
-            urlRequest.url = urlComponents.url
+            if isBody {
+                urlRequest.httpBody = urlComponents.query?.data(using: .utf8)
+            } else {
+                urlRequest.url = urlComponents.url
+            }
         }
         
         if urlRequest.value(forHTTPHeaderField: "Content-Type") == nil {

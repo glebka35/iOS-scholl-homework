@@ -23,32 +23,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "EDE960CC-8B5D-4CA4-BDDC-7156E24B8691"
-            shouldBeEnabled = "Yes"
+            uuid = "A694292A-EB8C-4C29-8DD6-E61BF074C6B9"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NetworkLayer/ViewController/ViewController.swift"
+            filePath = "NetworkLayer/GoogleTranslation/TranslationClient.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "displayImageAndObjects()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "6E2A13B0-13F0-4C96-850C-1EB122733699"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "NetworkLayer/ViewController/ViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
-            landmarkName = "drawRectangleOnImage(with:and:)"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "getTranslation(of:from:to:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

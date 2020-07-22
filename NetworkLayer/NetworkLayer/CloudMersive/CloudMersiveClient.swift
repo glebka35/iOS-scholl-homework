@@ -9,11 +9,12 @@
 import Foundation
 import UIKit
 
-protocol Env {
-    
+struct HTTPProvider: ClientSettingsProviderProtocol {
+    var settings: ClientSettings
+    var baseURL: URL
 }
 
-enum Environment: Env {
+enum Environment {
     case prod
     case debug
     case adhoc
@@ -32,13 +33,16 @@ class CloudMersiveClient {
     init() {
         headers = ["Apikey": "d90f3529-f5d3-4048-9d7c-46a4a35829c4", "Content-Type":"multipart/form-data; boundary=\(boundary)"]
         
-        settings = ClientSettings(baseURL: baseURL, environment: .production, baseHeaders: headers)
-        networkManager = ApiClient(settings: ClientSettings(baseURL: baseURL, environment: .qa, baseHeaders: nil))
+        settings = ClientSettings(baseHeaders: headers)
+        let provider = HTTPProvider(settings: settings, baseURL: baseURL)
+        networkManager = ApiClient(provider: provider)
     }
     
     func getRecognition(of image: Data?, name: String, completion: @escaping (_ objects: [Object]?, _ success: Bool?)->()) {
         if let data = image {
-            let request = Request(headers: headers, boundary: boundary, path: "/image/recognize/detect-objects", httpMethod: .post, task: .requestFormDataAndHeaders(bodyParameters: nil, urlParameters: nil, additionHeaders: headers, boundary: boundary, data: data, mimeType: "image/jpg", filename: name))
+            let request = Request(path: "/image/recognize/detect-objects", httpMethod: .post, task: .requestParametersAndHeaders(bodyParameters: nil, bodyContentType: .multipartFormData(boundary: boundary, data: data, mimeType: "image/jpg", filename: name), urlParameters: nil, additionHeaders: nil))
+
+//            .requestFormDataAndHeaders(urlParameters: nil, additionHeaders: headers, boundary: boundary, data: data, mimeType: "image/jpg", filename: name)
             
             networkManager.execute(request: request) {(response, error) in
                 if let response = response {

@@ -8,15 +8,15 @@
 
 import Foundation
 
-class ApiClient: NetworkManager {
-    var settings: ClientSettings
-    
+class ApiClient: NetworkManager {    
+    private var clientSettingsProvider: ClientSettingsProviderProtocol
+        
 //    MARK: - API usage with request and settings
     
-    init(settings: ClientSettings) {
-        self.settings = settings
+    init(provider: ClientSettingsProviderProtocol) {
+        clientSettingsProvider = provider
     }
-
+    
     func execute(request: Request, with completion: @escaping (_ apiResponse: Response?, _ error: Error?)->()) {
         performRequest(request) { data, response, error in
             if let response = response as? HTTPURLResponse {
@@ -35,7 +35,7 @@ class ApiClient: NetworkManager {
         let session = URLSession.shared
         do {
             let request = try self.buildRequest(from: route)
-            task = session.dataTask(with: request, completionHandler: { data, response, error in
+            task = session.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
                 completion(data, response, error)
             })
         } catch {
@@ -47,9 +47,10 @@ class ApiClient: NetworkManager {
 //    MARK: - Converting request in URLRequser
     
     private func buildRequest(from route: Request) throws -> URLRequest {
-        var request = URLRequest(url: settings.baseURL.appendingPathComponent(route.path), cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 20.0)
         
-        if let baseHeaders = settings.baseHeaders {
+        var request = URLRequest(url: clientSettingsProvider.baseURL.appendingPathComponent(route.path), cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 20.0)
+        
+        if let baseHeaders = clientSettingsProvider.settings.baseHeaders {
             addAdditionalHeaders(baseHeaders, request: &request)
         }
         
@@ -58,18 +59,13 @@ class ApiClient: NetworkManager {
             switch route.task {
             case .request:
                 request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-            
-            case .requestParameters(let bodyParameters, let urlParameters):
-                try self.configureParameters(bodyParameters: bodyParameters, urlParameters: urlParameters, request: &request)
                 
-            case .requestParametersAndHeaders(let bodyParameters, let urlParameters, let additionalHeaders):
+            case .requestParameters(let bodyParameters, let bodyContentType, let urlParameters):
+                try self.configureParameters(bodyParameters: bodyParameters, bodyContentType: bodyContentType, urlParameters: urlParameters, request: &request)
+                
+            case .requestParametersAndHeaders(let bodyParameters, let bodyContentType, let urlParameters, let additionalHeaders):
                 self.addAdditionalHeaders(additionalHeaders, request: &request)
-                try self.configureParameters(bodyParameters: bodyParameters, urlParameters: urlParameters, request: &request)
-                
-            case .requestFormDataAndHeaders(let bodyParameters, let urlParameters, let additionHeaders, let boundary, let data, let mimeType, let filename):
-                self.addAdditionalHeaders(additionHeaders, request: &request)
-                try self.configureParameters(bodyParameters: nil, urlParameters: urlParameters, request: &request)
-                request.httpBody = createFormDataBody(bodyParameters, boundary, data, mimeType, filename)
+                try self.configureParameters(bodyParameters: bodyParameters, bodyContentType: bodyContentType, urlParameters: urlParameters, request: &request)
             }
             return request
         } catch {
@@ -79,14 +75,16 @@ class ApiClient: NetworkManager {
     
 //    MARK: - Configuring URLRequest
     
-    private func configureParameters(bodyParameters: Parameters?, urlParameters: Parameters?, request: inout URLRequest) throws {
+    private func configureParameters(bodyParameters: Parameters?, bodyContentType: HTTPBodyContentType?, urlParameters: Parameters?, request: inout URLRequest) throws {
         do {
-            if let bodyParameters = bodyParameters {
-                try JSONParameterEncoder.encode(urlRequest: &request, with: bodyParameters)
+            if let bodyContentType = bodyContentType {
+                try bodyContentType.encode(urlRequest: &request, bodyParameters: bodyParameters)
+            } else {
+                try HTTPBodyContentType.jsonEncoded.encode(urlRequest: &request, bodyParameters: bodyParameters)
             }
-            
+
             if let urlParameters = urlParameters {
-                try URLParameterEncoder.encode(urlRequest: &request, with: urlParameters)
+                try URLParameterEncoder.encode(urlRequest: &request, with: urlParameters, isBody: false)
             }
         } catch {
             throw error
@@ -98,39 +96,5 @@ class ApiClient: NetworkManager {
         for (key, value) in headers {
             request.setValue(value, forHTTPHeaderField: key)
         }
-    }
-    
-    private func createFormDataBody(_ parameters: Parameters?,
-                                        _ boundary: String,
-                                        _ data: Data,
-                                        _ mimeType: String,
-                                        _ filename: String) -> Data {
-        let body = NSMutableData()
-        
-        let boundaryPrefix = "--\(boundary)\r\n"
-        
-        if let parameters = parameters {
-            for (key, value) in parameters {
-                body.appendString(boundaryPrefix)
-                body.appendString("Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n")
-                body.appendString("\(value)\r\n")
-            }
-        }
-        
-        body.appendString(boundaryPrefix)
-        body.appendString("Content-Disposition: form-data; name=\"file\"; filename=\"\(filename)\"\r\n")
-        body.appendString("Content-Type: \(mimeType)\r\n\r\n")
-        body.append(data)
-        body.appendString("\r\n")
-        body.appendString("--".appending(boundary.appending("--")))
-        
-        return body as Data
-    }
-}
-
-extension NSMutableData {
-    func appendString(_ string: String) {
-        let data = string.data(using: String.Encoding.utf8, allowLossyConversion: false)
-        append(data!)
     }
 }

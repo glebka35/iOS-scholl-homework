@@ -12,7 +12,5 @@ import UIKit
 public typealias NetworkCompletion = (_ apiResponse: Response?, _ error: Error?)->()
 
 protocol NetworkManager {
-    var settings: ClientSettings { get set }
-    
     func execute(request: Request, with completion: @escaping NetworkCompletion)
 }
